@@ -8,28 +8,31 @@
 </head>
 
 <body>
-    <h1 onmouseover="myfunction()">Überschrift</h1>
-    
-    <button onclick="myfunction()"></button>
-        <ul id="ul">
-         
-          </ul>
-        <script>
+    <h1 onmouseover="">Überschrift</h1>
+    <input type="text" id="input">Geben sie Werte ein:</input>
 
-            const tiere = ["Luchs", "Hirsch", "Uhu", "Wildsau", "Feldhase", "Fuchs"];
+    <button onclick="myfunction()">Ausgabe</button>
+    <ul id="ul">
 
-            
+    </ul>
+    <script>
 
-            function myfunction() {
+        const tiere = ["Luchs", "Hirsch", "Uhu", "Wildsau", "Feldhase", "Fuchs",];
 
-                let text = "";
-                for (let liste = 0; liste < tiere.length; liste++) {
-                    text += "<li>"+tiere[liste] +"</li>";
-                }
 
-                document.getElementById("ul").innerHTML = text;
+
+
+        function myfunction() {
+
+            let text = "";
+            tiere.push(document.getElementById("input").value)
+            for (let liste = 0; liste < tiere.length; liste++) {
+                text += "<li>" + tiere[liste] + "</li>";
             }
-        </script>
+
+            document.getElementById("ul").innerHTML = text;
+        }
+    </script>
 </body>
 
 </html>
