@@ -9,27 +9,25 @@
 
 <body>
     <h1 onmouseover="myfunction()">Überschrift</h1>
-    <p id="p">Ausgabe</p>
-    <button onclick="myfunction()">
+    
+    <button onclick="myfunction()"></button>
+        <ul id="ul">
+         
+          </ul>
         <script>
 
             const tiere = ["Luchs", "Hirsch", "Uhu", "Wildsau", "Feldhase", "Fuchs"];
 
-            text += tiere[0] + "<br>";
-            text += tiere[1] + "<br>";
-            text += tiere[2] + "<br>";
-            text += tiere[3] + "<br>";
-            text += tiere[4] + "<br>";
-            text += tiere[5] + "<br>";
+            
 
             function myfunction() {
 
                 let text = "";
                 for (let liste = 0; liste < tiere.length; liste++) {
-                    text += tiere[liste] + "<br>";
+                    text += "<li>"+tiere[liste] +"</li>";
                 }
 
-                document.getElementById("p").innerHTML = text;
+                document.getElementById("ul").innerHTML = text;
             }
         </script>
 </body>
