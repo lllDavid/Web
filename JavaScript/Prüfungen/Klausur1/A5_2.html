@@ -1,0 +1,29 @@
+<!-- Aufgabe 5 Teil2-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <form>
+    <input type="number" name="test" id="test"><br><br>
+    </form>
+    <button onclick="zuCelsius()">Ausgabe</button><br><br>
+    <p id="3"></p><br><br>
+    <script>
+
+        function zuCelsius() {
+            var fahrenheit = document.getElementById("test").value;
+            var celsius;
+            celsius = (5 / 9 * (fahrenheit - 32));
+            document.getElementById('3').innerHTML=("Der Fahrenheitwert in Celsius ist: " + celsius);
+           
+        }
+        
+
+    </script>
+</body>
+
+</html>
