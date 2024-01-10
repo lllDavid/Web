@@ -152,7 +152,7 @@
         fische.forEach(fisch => {
             let row = tabelleBody.insertRow();              // Erstellung des Tabellen Bodys
             Object.values(fisch).forEach(value => {        // Fisch Array durchlaufen und Daten Tabellen Body hinzufügen
-                let cell = row.insertCell();
+                let cell = row.insertCell();               // Aktuell noch das Problem das Tabelle immer neu erstellt wird und dadurch doppelte Einträge
                 cell.textContent = value;
             });
         });
