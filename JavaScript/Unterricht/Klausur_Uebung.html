@@ -69,7 +69,7 @@
 
 <script>
 
-    let bachforelle = {
+    const bachforelle = {
         name: "Bachforelle",
         art: "Salmoniden",
         größe: "40cm",
@@ -78,7 +78,7 @@
 
     }
 
-    let spiegelkarpfen = {
+    const spiegelkarpfen = {
         name: "Spiegelkarpfen",
         art: "Karpfenartige",
         größe: "60cm",
@@ -87,7 +87,7 @@
 
     }
 
-    let seesaibling = {
+    const seesaibling = {
         name: "Seesaibling",
         art: "Salmoniden",
         größe: "45cm",
@@ -95,14 +95,7 @@
         lebensraum: "Seen"
     }
 
-    let tabellenKopf = {
-        name: "Name",
-        art: "Art",
-        größe: "Größe",
-        schonzeit: "Schonzeit",
-        lebensraum: "Lebensraum"
 
-    }
 
 
 
@@ -129,6 +122,8 @@
 
 
 
+
+
     const fische = [bachforelle]
     fische.push(spiegelkarpfen)
 
@@ -138,22 +133,33 @@
 
 
 
-    let tabelleHead = document.querySelector('#tabelleHeader')
+
+
+    const tabellenKopf = {
+        name: "Name",
+        art: "Art",
+        größe: "Größe",
+        schonzeit: "Schonzeit",
+        lebensraum: "Lebensraum"
+
+    }
+
+    let tabelleHead = document.querySelector('#tabelleHeader')         // sprich die ersten elemente im html code mit tabelleHeader und tabelleBody ID an 
     let tabelleBody = document.querySelector('#tabelleBody')
 
-    Object.entries(tabellenKopf).forEach(([property, value]) => {     // Erstellung des Tabellen Headers
-        let cell = document.createElement('th');
-        cell.textContent = value;
-        tabelleHead.appendChild(cell);
+    Object.entries(tabellenKopf).forEach(([property, value]) => {     // durchlaufe tabellenKopf Objekt eigenschaften und werte
+        let cell = document.createElement('th');                       // erstelle th element
+        cell.textContent = value;                                       // fülle th mit den werten
+        tabelleHead.appendChild(cell);                                   // füge dem head hinzu
     });
 
     function tabelleAnzeigen() {
 
-        fische.forEach(fisch => {
-            let row = tabelleBody.insertRow();              // Erstellung des Tabellen Bodys
-            Object.values(fisch).forEach(value => {        // Fisch Array durchlaufen und Daten Tabellen Body hinzufügen
-                let cell = row.insertCell();               // Aktuell noch das Problem das Tabelle immer neu erstellt wird und dadurch doppelte Einträge
-                cell.textContent = value;
+        fische.forEach(fisch => {                            // durchlaufe fische array
+            let row = tabelleBody.insertRow();              // erstelle row in body
+            Object.values(fisch).forEach(value => {         // durchlaufe die werte von fisch array                 // Verschachtelte FOR EACH einmal
+            let cell = row.insertCell();                // zelle zu reihe
+            cell.textContent = value;                   // fülle zelle mit wert
             });
         });
 
