@@ -1,0 +1,48 @@
+<html>
+
+<body>
+    <button onclick="aufgabe1(),aufgabe2(),aufgabe3(),aufgabe4(),aufgabe5()">Klicken</button>
+    <p id="p"></p>
+    <script>
+
+        // Aufgabe 1 
+        const zahlen = new Set([1, 2, 3, 4, 5]);
+        function aufgabe1() {
+            console.log(zahlen.values())
+        }
+
+        // Aufgabe 2
+        const obst = new Set(["apple", "banana", "cherry"])
+        function aufgabe2() {
+            console.log(obst.has("banana"))
+            console.log(obst.has("date"))
+        }
+
+        //Aufgabe 3
+        function aufgabe3() {
+            zahlen.delete(3)
+            console.log(zahlen.values())
+        }
+
+        //Aufgabe 4
+        const colors = new Set(["red", "green", "blue"])
+        function aufgabe4() {
+            let text = ""
+            colors.forEach(function (value) {
+                text += "Die Farbe ist: " + value + "\n";
+            })
+            console.log(text)
+        }
+
+        //Aufgabe 5
+        const setA = new Set([1, 2, 3])
+        const setB = new Set([3, 4, 5])
+        
+        function aufgabe5() {
+            const setC = new Set([...setA, ...setB])
+            console.log(setC)
+        }
+    </script>
+</body>
+
+</html>
