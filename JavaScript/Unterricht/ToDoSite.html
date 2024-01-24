@@ -1,0 +1,166 @@
+<!-- David Wagner -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgabenplaner</title>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ol {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Aufgabenplaner</h1>
+    <div id="container">
+        <input id="inputField" placeholder="Aufgabe eingeben...">
+        <button id="addToListButton" onclick="createList()">Hinzufügen</button>
+        <button id onclick="saveUserTasks()">Speichere Aufgaben</button>
+        <button onclick="loadUserTasks()">Gespeicherte Aufgaben</button>
+    </div>
+    <ol id="list">
+
+    </ol>
+
+</body>
+<script>
+
+    let userTasks = []   // let da array veränderbar sein muss für lokale speicherung und zum wieder aufrufen des ganzen
+
+
+    function createList() {
+
+        let userInput = document.getElementById('inputField').value
+        userTasks.push(userInput)
+        console.log(userTasks)
+
+        let list = document.getElementById('list')
+        list.innerHTML = "";
+
+        for (let i = 0; i < userTasks.length; i++) {
+
+            let liElement = document.createElement('li')
+            liElement.textContent = userTasks[i]
+            list.appendChild(liElement)
+
+            let taskDoneButton = document.createElement('button')
+            taskDoneButton.textContent = "Done"
+            taskDoneButton.addEventListener('click', function () {
+                TaskDone(i);
+            });
+            list.appendChild(taskDoneButton)
+
+            let deleteTaskButton = document.createElement('button')
+            deleteTaskButton.textContent = "Delete"
+            deleteTaskButton.addEventListener('click', function () {
+                DeleteTask(i);
+            });
+            list.appendChild(deleteTaskButton)
+        }
+
+        function TaskDone(index) {
+
+            let liElements = document.getElementsByTagName('li')
+            let liElement = liElements[index];
+            let text = liElement.innerHTML;                        // aktuell noch das problem dass durchgestrichen weggeht wenn neues element kommt
+            liElement.innerHTML = `<s>${text}</s>`;
+        }
+
+        function DeleteTask(index) {
+
+            let list = document.getElementById('list');
+            let listItem = list.children[index];
+
+            if (listItem.tagName.toLowerCase() === 'li') {  //aktuell noch das problem  löscht nur ersten eintrag / button geht nur am ersten / index verschiebt sich nach löschen des ersten elements
+                list.removeChild(listItem);
+                userTasks.splice(index, 3);
+            }
+
+        }
+    }
+
+    function saveUserTasks() {
+        localStorage.setItem('tasks', JSON.stringify(userTasks));
+        console.log("Gespeichert: " + userTasks)
+    }
+
+    function loadUserTasks() {
+        userTasks = JSON.parse(localStorage.getItem('tasks'));
+        updateList();
+        console.log("Geladen: " + userTasks)
+    }
+
+
+
+
+
+    // Selber Code wie oben updatet list mit gespeicherten werten
+    function updateList() {
+        let list = document.getElementById('list');
+        list.innerHTML = "";
+
+        for (let i = 0; i < userTasks.length; i++) {
+            let liElement = document.createElement('li');
+            liElement.textContent = userTasks[i];
+            list.appendChild(liElement);
+
+            let taskDoneButton = document.createElement('button');
+            taskDoneButton.textContent = "Done";
+            taskDoneButton.addEventListener('click', function () {
+                TaskDone(i);
+            });
+            list.appendChild(taskDoneButton);
+
+            let deleteTaskButton = document.createElement('button');
+            deleteTaskButton.textContent = "Delete";
+            deleteTaskButton.addEventListener('click', function () {
+                DeleteTask(i);
+            });
+            list.appendChild(deleteTaskButton);
+        }
+        function TaskDone(index) {
+
+            let liElements = document.getElementsByTagName('li')
+            let liElement = liElements[index];
+            let text = liElement.innerHTML;
+            liElement.innerHTML = `<s>${text}</s>`;
+        }
+
+        function DeleteTask(index) {
+
+            let list = document.getElementById('list');
+            let listItem = list.children[index];
+
+            if (listItem.tagName.toLowerCase() === 'li') {
+                list.removeChild(listItem);
+                userTasks.splice(index, 3);
+            }
+
+        }
+    }
+
+</script>
+
+</html>
