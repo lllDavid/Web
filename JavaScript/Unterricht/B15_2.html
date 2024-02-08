@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p onclick="convertJsonStringToObject()">Klicken um Person in Konsole auszugeben </p>
+    <p onclick="convertJsonObjectToString()">Klicken um String in Konsole auszugeben</p>
+</body>
+<script>
+
+    // 1
+    function convertJsonStringToObject() {
+        const xyzstring = '{"name": "Max", "alter": 25, "stadt": "Berlin"}'
+        const abcobject = JSON.parse(xyzstring)
+        console.log(abcobject.name)
+    }
+
+    //2
+    function convertJsonObjectToString() {
+        const object123 = {
+            name: "David",
+            alter: 27,
+            stadt: "München"
+        }
+
+        const string123 = JSON.stringify(object123)
+        console.log(string123)
+    }
+
+</script>
+
+</html>
