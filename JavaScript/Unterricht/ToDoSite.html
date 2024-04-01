@@ -1,0 +1,169 @@
+<!-- David Wagner -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ol {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            margin: 5px;
+        }
+
+        #input {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Aufgabenplaner</h1>
+    <div>
+        <input id="input" placeholder="Neue Aufgabe...">
+    </div>
+    <div>
+        <button onclick="createNewListAndFillWithTasks()">Hinzufügen</button>
+        <button onclick="saveUserTasksToLocalStorage()">Speichern</button>
+        <button onclick="loadUserTasksFromLocalStorage()">Meine Aufgaben</button>
+    </div>
+    <ol id="list">
+
+    </ol>
+
+</body>
+<script>
+
+    let userTasks = []    // let statt const da sonst lokales speichern nicht funktioniert
+
+
+    function createNewListAndFillWithTasks() {
+        let userInput = document.getElementById('input').value
+        userTasks.push(userInput)
+        console.log(userTasks)
+
+        let list = document.getElementById('list')
+        list.innerHTML = "";
+
+        for (let i = 0; i < userTasks.length; i++) {
+
+            let liElement = document.createElement('li')
+            liElement.textContent = userTasks[i]
+            list.appendChild(liElement)
+
+            let taskDoneButton = document.createElement('button')
+            taskDoneButton.textContent = "Erledigt"
+            taskDoneButton.addEventListener('click', function () {
+                TaskDone(i);
+            });
+            list.appendChild(taskDoneButton)
+
+            let deleteTaskButton = document.createElement('button')
+            deleteTaskButton.textContent = "Löschen"
+            deleteTaskButton.addEventListener('click', function () {
+                DeleteTask(i);
+            });
+            list.appendChild(deleteTaskButton)
+        }
+
+        function TaskDone(index) {
+            let liElements = document.getElementsByTagName('li')
+            let liElement = liElements[index];
+            let text = liElement.innerHTML;
+            liElement.innerHTML = `<s>${text}</s>`;
+        }
+
+        function DeleteTask(index) {
+            let list = document.getElementById('list');
+            let listItem = list.children[index];
+            console.log(index)
+            console.log(userTasks)
+
+            if (listItem.tagName.toLowerCase() === 'li') {
+                list.removeChild(listItem);
+                userTasks.splice(index, 1);
+                console.log(index)
+                console.log(userTasks)
+            }
+
+        }
+    }
+
+    function saveUserTasksToLocalStorage() {
+        localStorage.setItem('tasks', JSON.stringify(userTasks));
+        console.log("Gespeichert: " + userTasks)
+    }
+
+    function loadUserTasksFromLocalStorage() {
+        userTasks = JSON.parse(localStorage.getItem('tasks'));
+        updateList();
+        console.log("Geladen: " + userTasks)
+    }
+
+    // Selber Code wie createNewListAndFillWithTasks() updatet liste mit gespeicherten werten
+    function updateList() {
+        let list = document.getElementById('list');
+        list.innerHTML = "";
+
+        for (let i = 0; i < userTasks.length; i++) {
+            let liElement = document.createElement('li');
+            liElement.textContent = userTasks[i];
+            list.appendChild(liElement);
+
+            let taskDoneButton = document.createElement('button');
+            taskDoneButton.textContent = "Done";
+            taskDoneButton.addEventListener('click', function () {
+                TaskDone(i);
+            });
+            list.appendChild(taskDoneButton);
+
+            let deleteTaskButton = document.createElement('button');
+            deleteTaskButton.textContent = "Delete";
+            deleteTaskButton.addEventListener('click', function () {
+                DeleteTask(i);
+            });
+            list.appendChild(deleteTaskButton);
+        }
+        function TaskDone(index) {
+
+            let liElements = document.getElementsByTagName('li')
+            let liElement = liElements[index];
+            let text = liElement.innerHTML;
+            liElement.innerHTML = `<s>${text}</s>`;
+        }
+
+        function DeleteTask(index) {
+
+            let list = document.getElementById('list');
+            let listItem = list.children[index];
+
+            if (listItem.tagName.toLowerCase() === 'li') {
+                list.removeChild(listItem);
+                userTasks.splice(index, 3);
+            }
+        }
+    }
+
+</script>
+
+</html>

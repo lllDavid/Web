@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="hover" onmouseover="ausgabe()">Hover für Ergebnis</h1>
+    <script>
+        // Array Inhalt:
+        function ausgabe() {
+            const tiere = ["Luchs", "Hirsch", "Uhu", "Wildsau", "Feldhase", "Fuchs"];
+
+            // Einfache & Dynamische Ausgabe der Array-Inhalte:
+            let text = "";
+            for (let liste = 0; liste < tiere.length; liste++) {
+                text += tiere[liste] + "<br>";
+            }
+
+            document.getElementById("hover").innerHTML = text;
+        }
+    </script>
+</body>
+
+</html>

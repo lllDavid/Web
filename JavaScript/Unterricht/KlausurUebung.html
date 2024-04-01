@@ -1,0 +1,175 @@
+<!-- David Wagner -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klausur JavaScript</title>
+    <style>
+        body {
+            padding: 20px;
+            display: block;
+            margin: 8px;
+        }
+
+        .images {
+            padding-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        img {
+            height: 300px;
+            width: auto;
+            margin: 10px;
+            display: flex;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        span {
+            font-weight: normal;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid;
+            color: black
+        }
+    </style>
+</head>
+
+<body onload="ausgabeName()">
+    <h1>Klausur JavaScript</h1>
+    <div class="images">
+        <img src="./bachforelle.jpg" onmouseover="stringLängeForelle()" onmouseout="tabelleAnzeigen()"> <img
+            src="./spiegelkarpfen.jpg" onmouseover="stringLängeKarpfen()" onmousedown="fischHinzufügen()">
+    </div>
+    <div class="ausgabe">
+        <p> Ausgabe Vor-und Nachname: <span id="name"></span> </p>
+        <p> Ausgabe Forelle: <span id="forelle"></span> </p>
+        <p> Ausgabe Karpfen: <span id="karpfen"></span> </p>
+        <p> Ausgabe Tabelle:
+        <table id="tabelle" style="display: none;">
+            <thead>
+                <tr id="tabelleHeader">
+                </tr>
+            </thead>
+            <tbody id="tabelleBody">
+
+            </tbody>
+        </table>
+        </p>
+    </div>
+</body>
+
+<script>
+
+    const bachforelle = {
+        name: "Bachforelle",
+        art: "Salmoniden",
+        größe: "40cm",
+        schonzeit: "Winter",
+        lebensraum: "Bergbäche"
+
+    }
+
+    const spiegelkarpfen = {
+        name: "Spiegelkarpfen",
+        art: "Karpfenartige",
+        größe: "60cm",
+        schonzeit: "Herbst",
+        lebensraum: "Seen"
+
+    }
+
+    const seesaibling = {
+        name: "Seesaibling",
+        art: "Salmoniden",
+        größe: "45cm",
+        schonzeit: "Herbst",
+        lebensraum: "Seen"
+    }
+
+
+
+
+
+    function ausgabeName() {
+        const name = "David Wagner";
+        document.getElementById('name').innerText = name;
+
+    }
+
+    function stringLängeForelle() {
+
+        let art = bachforelle.art
+        let artLength = bachforelle.art.length
+
+        document.getElementById('forelle').innerHTML = `Das Wort ${art} enthält ${artLength} Buchstaben`;
+    }
+
+    function stringLängeKarpfen() {
+        let art = spiegelkarpfen.art
+        let artLength = spiegelkarpfen.art.length
+
+        document.getElementById('karpfen').innerHTML = `Das Wort ${art} enthält ${artLength} Buchstaben`
+    }
+
+
+
+
+
+    const fische = [bachforelle]
+    fische.push(spiegelkarpfen)
+
+    function fischHinzufügen() {
+        fische.push(seesaibling)
+    }
+
+
+
+
+
+    const tabellenKopf = {
+        name: "Name",
+        art: "Art",
+        größe: "Größe",
+        schonzeit: "Schonzeit",
+        lebensraum: "Lebensraum"
+
+    }
+
+    let tabelleHead = document.querySelector('#tabelleHeader')         // sprich die ersten elemente im html code mit tabelleHeader und tabelleBody ID an 
+    let tabelleBody = document.querySelector('#tabelleBody')
+
+    Object.entries(tabellenKopf).forEach(([property, value]) => {     // durchlaufe tabellenKopf Objekt eigenschaften und werte
+        let cell = document.createElement('th');                       // erstelle th element
+        cell.textContent = value;                                       // fülle th mit den werten
+        tabelleHead.appendChild(cell);                                   // füge dem head hinzu
+    });
+
+    function tabelleAnzeigen() {
+
+        fische.forEach(fisch => {                            // durchlaufe fische array
+            let row = tabelleBody.insertRow();              // erstelle row in body
+            Object.values(fisch).forEach(value => {         // durchlaufe die werte von fisch array                 // Verschachtelte FOR EACH einmal
+            let cell = row.insertCell();                // zelle zu reihe
+            cell.textContent = value;                   // fülle zelle mit wert
+            });
+        });
+
+        let tabelle = document.getElementById('tabelle');
+        if (tabelle.style.display === 'none') {              // Tabelle nur anzeigen wenn mouseover event diese funktion auslöst
+            tabelle.style.display = 'table';
+        }
+    }
+
+</script>
+
+</html>
+<!-- David Wagner-->

@@ -1,0 +1,57 @@
+<!-- Event Lister-->
+<!-- Aufgabe 1-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: red;
+            height: 500px;
+            width: 500px;
+        }
+
+        #wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <button type="button" id="button1" >Klicken</button>
+    </div>
+
+    <script>
+        var x = document.getElementById("button1");
+        x.addEventListener("click", aendern);
+        x.addEventListener("click", alert);
+
+
+        var isClicked = false;
+
+        function aendern() {
+
+            document.getElementById('wrapper').style.backgroundColor = "blue"
+            var isClicked = true;
+        }
+
+        function alert() {
+            if (isClicked == true) {
+                window.alert("Die Farbe wurde auf blau geändert");
+                var isClicked = false;
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

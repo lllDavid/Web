@@ -1,0 +1,58 @@
+<html>
+
+<body>
+    <button onclick="aufgabe1(),aufgabe2(),aufgabe3(),aufgabe4()">Klicken</button>
+    <script>
+
+        //Aufgabe 1
+        const haupstadtMap = new Map([
+            ["Deutschland", "Berlin"],
+            ["Italien", "Rom"],
+            ["Russland", "Moskau"]
+        ]);
+
+        function aufgabe1() {
+
+            console.log(haupstadtMap.get("Italien"))
+
+        }
+
+
+        //Aufgabe 2
+        const obstPreise = new Map([
+            ["Apfel", 1.10],
+            ["Erdbeere", 0.10],
+            ["Banane", 1.20],
+        ])
+        function aufgabe2() {
+            console.log(obstPreise.has("Banane"))
+        }
+
+
+        //Aufgabe 3
+        const telefone = new Map([
+            ["David", 1756393232],
+            ["Sammy", 1873290873]
+        ])
+        function aufgabe3() {
+            telefone.set("Daniel", 1524324433)
+            console.log(telefone)
+        }
+
+
+        //Aufgabe 4 
+        const buecher = new Map([
+            ["Autor1", "Buch1"],
+            ["Autor2", "Buch2"],
+            ["Autor3", "Buch3"]
+        ])
+
+        function aufgabe4() {
+                buecher.entries().array.forEach(value => {
+                    console.log(value)
+                });
+        }
+    </script>
+</body>
+
+</html>

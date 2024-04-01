@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 onmouseover="">Überschrift</h1>
+    <input type="text" id="input">Geben sie Werte ein:</input>
+
+    <button onclick="myfunction()">Ausgabe</button>
+    <ul id="ul">
+
+    </ul>
+    <script>
+
+        const tiere = ["Luchs", "Hirsch", "Uhu", "Wildsau", "Feldhase", "Fuchs"];
+
+
+
+
+        function myfunction() {
+            let text = "";
+            tiere.push(document.getElementById("input").value)
+            for (let liste = 0; liste < tiere.length; liste++) {
+                text += "<li>" + tiere[liste] + "</li>";
+            }
+
+            document.getElementById("ul").innerHTML = text;
+        }
+    </script>
+</body>
+
+</html>
