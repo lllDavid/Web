@@ -7,7 +7,7 @@
 
 <h2>PHP Form Example</h2>
 
-<form method="post" action="process_form.php">
+<form method="post" action="#">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name"><br><br>
     
@@ -18,11 +18,9 @@
 </form>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
     $name = $_POST['name'];
     $email = $_POST['email'];
     
-    // Do something with the data, for example, you can echo it
     echo "Name: " . $name . "<br>";
     echo "Email: " . $email;
 }
