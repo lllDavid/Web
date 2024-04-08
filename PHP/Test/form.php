@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PHP Form Example</title>
+    <title>Login Form/title>
 </head>
 <body>
 
-<h2>PHP Form Example</h2>
+<h2>Please Login</h2>
 
 <form method="post" action="#">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name"><br><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password"><br><br>
     
     <label for="email">Email:</label><br>
     <input type="email" id="email" name="email"><br><br>
@@ -18,10 +18,10 @@
 </form>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
+    $passsword = $_POST['password'];
     $email = $_POST['email'];
     
-    echo "Name: " . $name . "<br>";
+    echo "Password: " . $password. "<br>";
     echo "Email: " . $email;
 }
 ?>
