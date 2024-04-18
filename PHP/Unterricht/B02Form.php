@@ -32,10 +32,11 @@ class game {
   }
 }
 
-$mygame = new game($_POST['game'], $_POST['herausgeber'] );  
+$mygame = new game($_POST['game'], $_POST['herausgeber'] );
+
+echo "<br>";  
 echo $mygame -> nachricht();
 
-echo "<br>";
 }
 ?>
 </body>
