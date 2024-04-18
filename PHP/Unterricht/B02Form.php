@@ -14,7 +14,6 @@
     <label for="herausgeber">Herausgeber:</label><br>
     <input id="herausgeberInput" name="herausgeber"><br><br>
 
-    
     <input type="submit" value="Submit">
 </form>
 
@@ -29,7 +28,7 @@ class game {
     $this->herausgeber = $herausgeber;
   }
   public function nachricht() {
-    return "Mein Lieblingsspiel ist" . $this->game . " und ist vom Hersteller " . $this->herausgeber . "!";
+    return "Mein Lieblingsspiel ist " . $this->game . " und ist vom Hersteller " . $this->herausgeber . "!";
   }
 }
 
