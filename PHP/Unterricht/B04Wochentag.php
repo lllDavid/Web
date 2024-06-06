@@ -1,13 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php 
-    $tag = (1,2,3,4,5,6,7);
-    ?>
-</body>
-</html>
+<?php
+$t = (random_int(1, 7));
+
+switch ($t) {
+    case "1":
+        echo "Montag.";
+        break;
+    case "2":
+        echo "Dienstag.";
+        break;
+    case "3":
+        echo "Mittwoch.";
+        break;
+    case "4":
+        echo "Donnerstag.";
+        break;
+    case "5":
+        echo "Freitag.";
+        break;
+    case "6":
+        echo "Samstag.";
+        break;
+    case "7":
+        echo "Sonntag.";
+        break;
+
+}
+?>
