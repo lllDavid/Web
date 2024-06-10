@@ -30,6 +30,7 @@ body {
     margin: 0 auto;
     border: 10px solid var(--clr-dark);
     justify-content: space-evenly;
+ 
 }
 
 .item {
