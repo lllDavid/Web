@@ -14,15 +14,14 @@
     </form>
 
     <?php
+    $string = " ";
     // Bestehende Funktionalität: Text ändern
     if (isset($_POST['aenderButton'])) {
         echo "<p>Der Text wurde geändert!</p>";
     }
 
     if (isset($_POST['neuerButton'])) {
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
+  
         echo "<p>Neuer Text</p>";
     }
 
