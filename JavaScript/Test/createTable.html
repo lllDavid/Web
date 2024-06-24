@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button" onclick="createTable()">Click</button>
+    <div id="output"></div>
+    <script>
+
+
+        person1 = {
+            name: "David",
+            age: 27
+        }
+
+        person2 = {
+            name: "Michael",
+            age: 19
+        }
+
+        person3 = {
+            name: "Daniel",
+            age: 23
+        }
+
+        const persons = [person1, person2, person3]
+
+        function createTable() {
+
+            let outputDiv = document.getElementById("output")
+            let table = document.createElement("table")
+            let tableRow = document.createElement("tr")
+            let tableHeader = document.createElement("thead")
+            let tableBody = document.createElement("tbody")
+
+            let tableHeaderData = {
+                name: "Name",
+                age: "Age"
+            }
+
+
+            for (let value of Object.values(tableHeaderData)) {
+                let cell = document.createElement("th")
+                cell.textContent = value
+                tableRow.append(cell)
+                tableHeader.append(tableRow)
+                table.append(tableHeader)
+                outputDiv.append(table)
+            }
+
+            for (let person of Object.values(persons)) {
+                let row = tableBody.insertRow()
+                Object.values(person).forEach(value => {
+                    let cell = row.insertCell()
+                    cell.textContent = value
+                    table.append(tableBody)
+                })
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
