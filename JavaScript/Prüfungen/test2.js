@@ -11,5 +11,5 @@ function showTable() {
             liste.push(col.innerHTML + "<br>")
              }
     }
-    output.innerHTML = liste
+    output.innerHTML = liste.join('')
 }
