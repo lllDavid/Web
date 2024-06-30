@@ -11,9 +11,16 @@
         }
 
         <?php
-        if (isset($_POST['hexfarbe'])) {
-            $hexfarbe = $_POST['hexfarbe'];
-            echo "h1, p { color: $hexfarbe}";
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            function changeColor()
+            {
+                if (isset($_POST['hexfarbe'])) {
+                    $hexfarbe = $_POST['hexfarbe'];
+                    echo "h1, p { color: $hexfarbe}";
+                }
+            }
+
+            changeColor();
         }
         ?>
     </style>
@@ -28,6 +35,7 @@
         <input type="text" id="hexfarbe" name="hexfarbe" placeholder="#ff0000">
         <input type="submit" value="Farbe ändern">
     </form>
+
 
 </body>
 
