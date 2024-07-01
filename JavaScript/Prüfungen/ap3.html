@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abschlussprüfung</title>
+</head>
+
+<body>
+    <h1 class="klasse-eins">Titel der Seite</h1>
+    <div id="ausgabe"></div>
+    <input id="eingabe">
+    <button id="btn">Click</button>
+    
+    <script>
+        document.getElementById("btn").addEventListener("click", funktionfuenf);
+
+        function funktionfuenf() {
+            let button = document.getElementById("btn")
+            let input = document.getElementById("eingabe").value
+            let p = document.createElement("p")
+            p.textContent = input
+            document.body.appendChild(p);
+        }
+    </script>
+</body>
+
+</html>
