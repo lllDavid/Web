@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let neuerButton = document.getElementById('neuerButton');
     neuerButton.addEventListener("click", function(){
-        let neuerText = document.createElement("p")
-        neuerText.textContent = "Neuer Text"
-        document.body.append(neuerText)
+        let newP = document.createElement("p")
+        newP.textContent = "Neuer Text in neuem P Tag"
+        document.body.append(newP)
     })
 });
