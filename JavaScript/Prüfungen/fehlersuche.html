@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Fische Verwaltung</title>
+    <link rel="stylesheet" href="fehlersuche.css">
+</head>
+
+<body>
+    <div class="grid-raster" id="kachel-container">
+        <div class="kachel">
+            <h3>Überschrift 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button>Klicken</button>
+        </div>
+        <div class="kachel">
+            <h3>Überschrift 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button>Klicken</button>
+        </div>
+        <div class="kachel">
+            <h3>Überschrift 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button>Klicken</button>
+        </div>
+    </div>
+
+    <table id="fisch-tabelle">
+        <thead>
+            <tr>
+                <th>Name des Fisches</th>
+                <th>Gewässer</th>
+                <th>Fangzeit</th>
+                <th>Aktion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hecht</td>
+                <td>See</td>
+                <td>Sommer</td>
+                <td><button class="loesch-button" onclick="reiheEntfernen(this)">&#x2716;</button></td>
+            </tr>
+            <tr>
+                <td>Karpfen</td>
+                <td>Fluss</td>
+                <td>Herbst</td>
+                <td><button class="loesch-button" onclick="reiheEntfernen(this)">&#x2716;</button></td>
+            </tr>
+            <tr>
+                <td>Forelle</td>
+                <td>Bach</td>
+                <td>Frühling</td>
+                <td><button class="loesch-button" onclick="reiheEntfernen(this)">&#x2716;</button></td>
+            </tr>
+            <tr>
+                <td>Wels</td>
+                <td>Stausee</td>
+                <td>Frühling</td>
+                <td><button class="loesch-button" onclick="reiheEntfernen(this)">&#x2716;</button></td>
+            </tr>
+            <tr>
+                <td>Barsch</td>
+                <td>Teich</td>
+                <td>Sommer</td>
+                <td><button class="loesch-button" onclick="reiheEntfernen(this)">&#x2716;</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form id="neuer-fisch-formular">
+        <input type="text" id="fisch-name" placeholder="Fische Name" required>
+        <input type="text" id="gewaesser" placeholder="Gewässer" required>
+        <input type="text" id="fangzeit" placeholder="Fangzeit" required>
+        <button type="submit">Fisch hinzufügen</button>
+    </form>
+
+    <script src="fehlersuche.js"></script>
+
+    <!-- Wird für Teil 3 benötigt -->
+    <form action="neue_kachel.php" method="post" id="neue-kachel-formular">
+        <input type="text" name="ueberschrift" placeholder="Überschrift" required>
+        <input type="text" name="text" placeholder="Text" required>
+        <button type="submit">Kachel hinzufügen</button>
+    </form>
+
+</body>
+
+</html>
