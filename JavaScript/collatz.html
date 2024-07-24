@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <button onclick="collatz()">Click</button>
+
+    <script>
+        function collatz() {
+            let output = document.getElementById("output");
+            output.innerHTML = "";
+
+            for (let i = 1; i <= 20; i++) {
+                let number = i;
+                output.innerHTML += `Zahl: ${i}<br>`;
+
+                while (number !== 1) {
+                    if (number % 2 === 0) {
+                        number = number / 2;
+                    } else {
+                        number = number * 3 + 1;
+                    }
+                    output.innerHTML += `Zwischenschritt: ${number}<br>`;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
